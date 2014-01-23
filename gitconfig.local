@@ -1,0 +1,12 @@
+[aliases]
+  fetch-rebase-qa = !sh -c 'git fetch && git rebase origin/qa' -
+  fetch-rebase-qa-push = !sh -c 'git fetch-rebase-qa && git push -u' -
+[core]
+  excludesfile = ~/.gitignore_global
+[credentials]
+  helper = osxkeychain
+[format]
+  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[user]
+  email = brendan.kemp@gmail.com
+  name = Brendan Kemp

@@ -15,7 +15,6 @@
   st = status
   up = !git fetch origin && git rebase origin/master
 [core]
-  excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
   ff = only
