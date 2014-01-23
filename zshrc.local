@@ -1,0 +1,30 @@
+#################
+# ZSH
+#################
+# unset correctall
+unsetopt correctall
+
+# Set forward-slash as word delimiter
+WORDCHARS=${WORDCHARS//[&=\/;!#%\{]}
+
+# bind emacs mode
+bindkey -e
+
+# syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#################
+# ENV
+#################
+# editor
+export VISUAL='subl -w'
+export EDITOR=$VISUAL
+
+# path
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+
+# shell
+export SHELL=/bin/zsh
+
+# rbenv shim
+eval "$(rbenv init - zsh)"

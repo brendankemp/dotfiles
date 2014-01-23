@@ -1,0 +1,70 @@
+#################
+# WORKFLOW
+#################
+# edit devlog
+alias devlog='$EDITOR ~/.todo'
+# edit dotfiles
+alias dots="subl ~/projects/dotfiles"
+# re-source zsh config
+alias reals="source ~/.zlogin && source ~/.zshrc"
+
+#################
+# GIT
+#################
+alias g="git"
+alias gbd="git delete-branch"
+alias gci="git commit"
+alias gp="git push"
+alias gs="git status"
+
+# add
+alias ga="git add"
+alias gaa="git add -A"
+
+# checkout
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gcoo="git checkout --ours"
+alias gcot="git checkout --theirs"
+
+# fetch
+alias gf="git fetch"
+alias gfr="git fetch-rebase-qa"
+alias gfrp="git fetch-rebase-qa-push"
+
+# gitx
+alias gitx="gitx --all"
+
+# rebase
+alias grc="git rebase --continue"
+alias grs="git rebase --skip"
+
+#################
+# HEROKU
+#################
+alias h="heroku"
+
+#################
+# UTILS
+#################
+alias iphone='open `xcode-select --print-path`/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+title() {
+  title=$*
+  echo -ne "\033]0;"$title"\007"
+}
+alias killp="lsof -i tcp:'$@' | awk 'NR!=1 {print $2}' | xargs kill"
+
+#################
+# ZEUS
+#################
+alias uc='zeus console'
+alias ug='zeus generate'
+alias ur='zeus rake'
+alias us='zeus start'
+alias ut='zeus test'
+alias uv='zeus server'
+
+#################
+# ZSH
+#################
+alias ll='ls -Alh'
