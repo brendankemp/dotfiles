@@ -1,11 +1,20 @@
 [alias]
+  br = branch
   fetch-rebase-qa = !sh -c 'git fetch && git rebase origin/qa' -
   fetch-rebase-qa-push = !sh -c 'git fetch-rebase-qa && git push -u' -
   l = log --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  s = status
 [core]
   excludesfile = ~/.gitignore_global
 [credentials]
   helper = osxkeychain
+[fetch]
+  prune = true
+[pull]
+  rebase = true
+[status]
+  branch = true
+  short = true
 [user]
   email = brendan.kemp@gmail.com
   name = Brendan Kemp

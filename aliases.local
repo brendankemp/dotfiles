@@ -1,4 +1,3 @@
-#################
 # WORKFLOW
 #################
 # edit devlog
@@ -6,9 +5,8 @@ alias devlog='$EDITOR ~/.todo'
 # edit dotfiles
 alias dots="subl ~/projects/dotfiles"
 # re-source zsh config
-alias reals="source ~/.zlogin && source ~/.zshrc"
+alias reals="source ~/.zshrc && source ~/.zlogin"
 
-#################
 # GIT
 #################
 alias g="git"
@@ -39,12 +37,10 @@ alias gitx="gitx --all"
 alias grc="git rebase --continue"
 alias grs="git rebase --skip"
 
-#################
 # HEROKU
 #################
 alias h="heroku"
 
-#################
 # UTILS
 #################
 alias iphone='open `xcode-select --print-path`/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
@@ -54,7 +50,6 @@ title() {
 }
 alias killp="lsof -i tcp:'$@' | awk 'NR!=1 {print $2}' | xargs kill"
 
-#################
 # ZEUS
 #################
 alias uc='zeus console'
@@ -63,8 +58,8 @@ alias ur='zeus rake'
 alias us='zeus start'
 alias ut='zeus test'
 alias uv='zeus server'
+alias um="zeus rake db:migrate db:rollback && zeus rake db:migrate db:test:prepare"
 
-#################
 # ZSH
 #################
 alias ll='ls -Alh'
