@@ -1,23 +1,34 @@
+# COMPUTER
+#################
+alias unmount-network-drives="find /Volumes -maxdepth 1 -not -user root -print0 | xargs -0 umount"
+alias und="unmount-network-drives"
+alias slackbot="curl --data '$argv[2,-1]' https://wespire.slack.com/services/hooks/slackbot?token=2RiQwG777lCVdhoRGfDAQAQn\&channel=%23$1"
+
 # WORKFLOW
 #################
-# edit devlog
-alias devlog='$EDITOR ~/.todo'
 # edit dotfiles
-alias dots="subl ~/projects/dotfiles"
+alias dots="$EDITOR ~/projects/dotfiles"
 # re-source zsh config
 alias reals="source ~/.zshrc && source ~/.zlogin"
 
 # GIT
 #################
 alias g="git"
-alias gbd="git delete-branch"
 alias gci="git commit"
+alias gcp="git cherry-pick"
+alias gl="git pull"
 alias gp="git push"
 alias gs="git status"
+alias gmb="git checkout qa && git pull && git merge @{-1}"
+alias gsl='git log --pretty="format:%Cred%h%Creset %Cgreen%an%Creset %s"'
 
 # add
 alias ga="git add"
 alias gaa="git add -A"
+
+# branch
+alias gb="git branch"
+gdb() { git push origin :"$*"; git branch -D "$*" }
 
 # checkout
 alias gco="git checkout"
@@ -28,6 +39,7 @@ alias gcot="git checkout --theirs"
 # fetch
 alias gf="git fetch"
 alias gfr="git fetch-rebase-qa"
+alias gfri="git fetch && git rebase -i origin/qa"
 alias gfrp="git fetch-rebase-qa-push"
 
 # gitx
@@ -41,6 +53,23 @@ alias grs="git rebase --skip"
 #################
 alias h="heroku"
 
+# PROJECTS
+#################
+alias be='bundle exec'
+bowser-cmd() { curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "token=SLACK_TOKENSLACK_TOKENSLACK_TOKEN&text=$*" http://localhost:1337 }
+
+# RAILS
+#################
+alias sau='script/app_update.sh'
+alias fs='foreman start -f Procfile.dev'
+alias migrate='bin/rake db:migrate db:rollback && bin/rake db:migrate'
+brs() { bin/rake test TESTOPTS="--seed=$*" }
+
+
+# RAILS
+#################
+alias ntf='npm run-script test_file'
+
 # UTILS
 #################
 alias iphone='open `xcode-select --print-path`/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
@@ -48,17 +77,6 @@ title() {
   title=$*
   echo -ne "\033]0;"$title"\007"
 }
-alias killp="lsof -i tcp:'$@' | awk 'NR!=1 {print $2}' | xargs kill"
-
-# ZEUS
-#################
-alias uc='zeus console'
-alias ug='zeus generate'
-alias ur='zeus rake'
-alias us='zeus start'
-alias ut='zeus test'
-alias uv='zeus server'
-alias um="zeus rake db:migrate db:rollback && zeus rake db:migrate db:test:prepare"
 
 # ZSH
 #################

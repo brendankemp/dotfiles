@@ -9,16 +9,37 @@
   ci = commit -v
   co = checkout
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
-  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
-  merge-branch = !git checkout master && git merge @{-1}
-  pr = !hub pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
 [core]
   autocrlf = input
+	excludesfile = /Users/dean/.gitignore_global
+	editor = code --wait
+[diff]
+  tool = VSCode
+[difftool "VSCode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
+  tool = Kaleidoscope
   ff = only
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [include]
   path = .gitconfig.local
 [commit]
   template = ~/.gitmessage
+[credential]
+	helper = osxkeychain
+[user]
+	name = Brendan Kemp
+	email = brendan.kemp@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rerere]
+	enabled = true

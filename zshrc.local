@@ -4,6 +4,9 @@
 # unset correctall
 unsetopt correctall
 
+# load zmv
+autoload zmv
+
 # Set forward-slash as word delimiter
 WORDCHARS=${WORDCHARS//[&=\/;!#%\{]}
 
@@ -13,18 +16,33 @@ bindkey -e
 # syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# export highlighters
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
 #################
 # ENV
 #################
+
 # editor
-export VISUAL='subl -w'
+export VISUAL='code --wait'
 export EDITOR=$VISUAL
 
 # path
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+
+# Put the Homebrew installation of QT on the path
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 # shell
 export SHELL=/bin/zsh
 
 # rbenv shim
 eval "$(rbenv init - zsh)"
+
+# Add all SSH keys so you don't have to type the passwords
+ssh-add -A 2>/dev/null;
+
+# NVM Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion

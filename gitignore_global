@@ -26,7 +26,7 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
+
 *.sqlite
 
 ######################
@@ -46,8 +46,11 @@ Thumbs.db
 ##################
 .bundle
 .env
-.sublime-project
+*.sublime-project
+*.sublime-workspace
 db/*.sqlite3
+tags
 tmp/**/*
 vendor/ruby
 zeus.json
+.vscode/

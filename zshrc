@@ -48,8 +48,8 @@ export EDITOR=$VISUAL
 # look for ey config in project dirs
 export EYRC=./.eyrc
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
-
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
